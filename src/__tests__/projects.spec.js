@@ -4,7 +4,7 @@ const app = require("../");
 const { validate: isUuid } = require("uuid");
 
 describe("Projects", () => {
-  it("should be able to create a new repository", async () => {
+  it("deve ser capaz de criar um novo repositório", async () => {
     const response = await request(app)
       .post("/repositories")
       .send({
@@ -37,7 +37,7 @@ describe("Projects", () => {
     );
   });
 
-  it("should be able to list the projects", async () => {
+  it("deve ser capaz de listar os projetos", async () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
@@ -61,7 +61,7 @@ describe("Projects", () => {
     );
   });
 
-  it("should be able to update repository", async () => {
+  it("deve ser capaz de atualizar o repositório", async () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
@@ -87,13 +87,13 @@ describe("Projects", () => {
     });
   });
 
-  it("should not be able to update a non existing repository", async () => {
+  it("não deve ser capaz de atualizar um repositório não existente", async () => {
     await request(app)
       .put(`/repositories/123`)
       .expect(404);
   });
 
-  it("should not be able to update repository likes manually", async () => {
+  it("não deve ser capaz de atualizar as curtidas do repositório manualmente", async () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
@@ -113,7 +113,7 @@ describe("Projects", () => {
     });
   });
 
-  it("should be able to delete the repository", async () => {
+  it("deve ser capaz de deletar o repositório", async () => {
     const response = await request(app)
       .post("/repositories")
       .send({
@@ -133,7 +133,7 @@ describe("Projects", () => {
     expect(repository).toBe(false);
   });
 
-  it("should not be able to delete a non existing repository", async () => {
+  it("não deve ser capaz de excluir um repositório não existente", async () => {
     await request(app)
       .delete(`/repositories/123`)
       .expect(404);
